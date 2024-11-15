@@ -27,4 +27,4 @@ Join the [nexus discord](https://discord.gg/Mvk7W7gjE4) to report issues. Upload
 - Displays the total combat time
 
 ## Screenshots
-![example_combat_timer](https://github.com/Linkaaaaa/GW2CombatTimer/examples/blob/master/combat_timer.png?raw=true)
+![example_combat_timer](https://github.com/Linkaaaaa/GW2CombatTimer/blob/master/examples/combat_timer.png?raw=true)

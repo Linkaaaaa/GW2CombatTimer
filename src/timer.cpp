@@ -31,6 +31,10 @@ namespace timer {
 		current.end = std::chrono::system_clock::now();
 	}
 
+	void ClearPrevious() {
+		previous.clear();
+	}
+
 	std::string GetCombatTime(const std::chrono::system_clock::duration& delta) {
 		int milliseconds = std::chrono::duration_cast<std::chrono::milliseconds>(delta).count() % 1000;
 		int seconds = Settings::DisplayMinutes
@@ -39,29 +43,21 @@ namespace timer {
 		int minutes = std::chrono::duration_cast<std::chrono::minutes>(delta).count() % 60;
 		int hours = std::chrono::duration_cast<std::chrono::hours>(delta).count() % 24;
 
+		std::string result = "";
+
 		if (Settings::UseTimeUnits) {
-			if (Settings::DisplayHours) {
-				return std::format("{:02}h {:02}m {:02}s {:03}ms", hours, minutes, seconds, milliseconds);
-			}
-			else if (Settings::DisplayMinutes) {
-				return std::format("{:02}m {:02}s {:03}ms", minutes, seconds, milliseconds);
-			}
-			else {
-				return std::format("{:02}s {:03}ms", seconds, milliseconds);
-			}
+			result += Settings::DisplayHours ? std::format("{:02}h ", hours) : "";
+			result += Settings::DisplayMinutes ? std::format("{:02}m ", minutes) : "";
+			result += Settings::DisplayMilliseconds ? std::format("{:02}s ", seconds) : std::format("{:02}s", seconds);
+			result += Settings::DisplayMilliseconds ? std::format("{:03}ms ", milliseconds) : "";
 		}
 		else {
-			if (Settings::DisplayHours) {
-				return std::format("{:02}:{:02}:{:02}.{:03}", hours, minutes, seconds, milliseconds);
-			}
-			else if (Settings::DisplayMinutes) {
-				return std::format("{:02}:{:02}.{:03}", minutes, seconds, milliseconds);
-			}
-			else {
-				return std::format("{:02}.{:03}", seconds, milliseconds);
-			}
+			result += Settings::DisplayHours ? std::format("{:02}:", hours) : "";
+			result += Settings::DisplayMinutes ? std::format("{:02}:", minutes) : "";
+			result += Settings::DisplayMilliseconds ? std::format("{:02}.", seconds) : std::format("{:02}", seconds);
+			result += Settings::DisplayMilliseconds ? std::format("{:03}", milliseconds) : "";
 		}
-		return "";
+		return result;
 	}
 
 	std::string GetTotalCombatTime(const std::vector <TimeInfo>& ci) {

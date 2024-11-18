@@ -15,6 +15,7 @@ extern const char* SHOW_WINDOW_PREVIOUS_TIMES;
 
 extern const char* DISPLAY_COMBAT_STATUS;
 extern const char* DISPLAY_FINAL_TIME;
+extern const char* DISPLAY_MILLISECONDS;
 extern const char* DISPLAY_MINUTES;
 extern const char* DISPLAY_HOURS;
 extern const char* DISPLAY_START_TIMESTAMP;
@@ -44,6 +45,7 @@ namespace Settings
 
 	extern bool DisplayCombatStatus;
 	extern bool DisplayFinalTime;
+	extern bool DisplayMilliseconds;
 	extern bool DisplayMinutes;
 	extern bool DisplayHours;
 	extern bool DisplayStartTimestamp;

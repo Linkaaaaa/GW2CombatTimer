@@ -87,7 +87,8 @@ void RenderWindowPreviousTimes() {
 	{
 		ImVec2 region = ImGui::GetContentRegionAvail();
 		float textY = ImGui::GetTextLineHeightWithSpacing();
-		if (ImGui::BeginChild("##ChildTable", ImVec2(region.x, region.y - textY), gui::windowFlags)) {
+		float buttonY = ImGui::GetFontSize() * 2;
+		if (ImGui::BeginChild("##ChildTable", ImVec2(region.x, region.y - textY - buttonY), gui::windowFlags)) {
 			if (ImGui::BeginTable("Times", 3, gui::tableFlags)) {
 				ImGui::TableSetupColumn("Start", gui::columnFlags);
 				ImGui::TableSetupColumn("End", gui::columnFlags);
@@ -108,6 +109,9 @@ void RenderWindowPreviousTimes() {
 		}
 		ImGui::EndChild();
 		ImGui::Text("Total Combat Time: %s", timer::GetTotalCombatTime(previous).c_str());
+		if (ImGui::Button("Clear Times")) {
+			timer::ClearPrevious();
+		}
 	}
 	ImGui::End();
 
@@ -165,6 +169,10 @@ void RenderCombatTimerSettings() {
 	}
 	if (ImGui::Checkbox("Display Final Time", &Settings::DisplayFinalTime)) {
 		Settings::Settings[WINDOW_COMBAT_TIMER_KEY][DISPLAY_FINAL_TIME] = Settings::DisplayFinalTime;
+		Settings::Save(SettingsPath);
+	}
+	if (ImGui::Checkbox("Display Milliseconds", &Settings::DisplayMilliseconds)) {
+		Settings::Settings[WINDOW_COMBAT_TIMER_KEY][DISPLAY_MILLISECONDS] = Settings::DisplayMilliseconds;
 		Settings::Save(SettingsPath);
 	}
 	if (ImGui::Checkbox("Display Minutes", &Settings::DisplayMinutes)) {

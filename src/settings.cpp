@@ -12,6 +12,7 @@ const char* SHOW_WINDOW_PREVIOUS_TIMES = "ShowWindowPreviousTimes";
 
 const char* DISPLAY_COMBAT_STATUS = "DisplayCombatStatus";
 const char* DISPLAY_FINAL_TIME = "DisplayFinalTime";
+const char* DISPLAY_MILLISECONDS = "DisplayMilliseconds";
 const char* DISPLAY_MINUTES = "DisplayMinutes";
 const char* DISPLAY_HOURS = "DisplayHours";
 const char* DISPLAY_START_TIMESTAMP = "DisplayStartTimestamp";
@@ -76,6 +77,9 @@ namespace Settings
 		}
 
 		/* Display Time */
+		if (!Settings[WINDOW_COMBAT_TIMER_KEY][DISPLAY_MILLISECONDS].is_null()) {
+			Settings[WINDOW_COMBAT_TIMER_KEY][DISPLAY_MILLISECONDS].get_to<bool>(DisplayMilliseconds);
+		}
 		if (!Settings[WINDOW_COMBAT_TIMER_KEY][DISPLAY_HOURS].is_null()) {
 			Settings[WINDOW_COMBAT_TIMER_KEY][DISPLAY_HOURS].get_to<bool>(DisplayHours);
 		}
@@ -128,6 +132,7 @@ namespace Settings
 
 	bool DisplayCombatStatus = true;
 	bool DisplayFinalTime = true;
+	bool DisplayMilliseconds = true;
 	bool DisplayMinutes = false;
 	bool DisplayHours = false;
 	bool DisplayStartTimestamp = true;

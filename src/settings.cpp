@@ -19,6 +19,7 @@ const char* DISPLAY_START_TIMESTAMP = "DisplayStartTimestamp";
 const char* DISPLAY_END_TIMESTAMP = "DisplayEndTimestamp";
 const char* DISPLAY_FULL_TIMESTAMP_DATE = "DisplayFullTimestampDate";
 const char* USE_TIME_UNITS = "UseTimeUnits";
+const char* HIDE_WINDOWS = "HideWindows";
 
 const char* MIN_COMBAT_TIMER_WINDOW_WIDTH = "MinCombatTimerWindowWidth";
 const char* MIN_COMBAT_TIMER_WINDOW_HEIGHT = "MinCombatTimerWindowHeight";
@@ -92,6 +93,11 @@ namespace Settings
 			Settings[WINDOW_COMBAT_TIMER_KEY][USE_TIME_UNITS].get_to<bool>(UseTimeUnits);
 		}
 
+		/* Hide Windows */
+		if (!Settings[WINDOW_COMBAT_TIMER_KEY][HIDE_WINDOWS].is_null()) {
+			Settings[WINDOW_COMBAT_TIMER_KEY][HIDE_WINDOWS].get_to<bool>(HideWindows);
+		}
+
 		/* Window Sizing */
 		/* Combat Timer */
 		if (!Settings[WINDOW_COMBAT_TIMER_KEY][MIN_COMBAT_TIMER_WINDOW_WIDTH].is_null()) {
@@ -139,6 +145,7 @@ namespace Settings
 	bool DisplayEndTimestamp = true;
 	bool DisplayFullTimestampDate = true;
 	bool UseTimeUnits = false;
+	bool HideWindows = true;
 
 	float MinCombatTimerWindowWidth = 300.0f;
 	float MinCombatTimerWindowHeight = 100.0f;

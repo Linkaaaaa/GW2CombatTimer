@@ -20,6 +20,11 @@ void RenderWindowCombatTimer() {
 		timer::Stop();
 	}
 
+	// Hide during loading screen / cutscene or map open
+	if (Settings::HideWindows && !NexusLink->IsGameplay || nullptr != MumbleLink && MumbleLink->Context.IsMapOpen == 1) {
+		return;
+	}
+
 	if (!Settings::ShowWindowCombatTimer) {
 		return;
 	}
@@ -73,6 +78,11 @@ void RenderWindowCombatTimer() {
 
 void RenderWindowPreviousTimes() {
 	ImGuiIO& io = ImGui::GetIO();
+
+	// Hide during loading screen / cutscene or map open
+	if (Settings::HideWindows && !NexusLink->IsGameplay || nullptr != MumbleLink && MumbleLink->Context.IsMapOpen == 1) {
+		return;
+	}
 
 	if (!Settings::ShowWindowPreviousTimes) {
 		return;
@@ -212,8 +222,13 @@ void RenderCombatTimerSettings() {
 		Settings::Settings[WINDOW_COMBAT_TIMER_KEY][DISPLAY_FULL_TIMESTAMP_DATE] = Settings::DisplayFullTimestampDate;
 		Settings::Save(SettingsPath);
 	}
+	ImGui::Text("General");
 	if (ImGui::Checkbox("Use Time Units", &Settings::UseTimeUnits)) {
 		Settings::Settings[WINDOW_COMBAT_TIMER_KEY][USE_TIME_UNITS] = Settings::UseTimeUnits;
+		Settings::Save(SettingsPath);
+	}
+	if (ImGui::Checkbox("Hide Windows During Cutscene / Loading Screen / Map Open", &Settings::HideWindows)) {
+		Settings::Settings[WINDOW_COMBAT_TIMER_KEY][HIDE_WINDOWS] = Settings::HideWindows;
 		Settings::Save(SettingsPath);
 	}
 }

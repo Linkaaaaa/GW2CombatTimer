@@ -22,6 +22,7 @@ extern const char* DISPLAY_START_TIMESTAMP;
 extern const char* DISPLAY_END_TIMESTAMP;
 extern const char* DISPLAY_FULL_TIMESTAMP_DATE;
 extern const char* USE_TIME_UNITS;
+extern const char* HIDE_WINDOWS;
 
 extern const char* MIN_COMBAT_TIMER_WINDOW_WIDTH;
 extern const char* MIN_COMBAT_TIMER_WINDOW_HEIGHT;
@@ -52,6 +53,7 @@ namespace Settings
 	extern bool DisplayEndTimestamp;
 	extern bool DisplayFullTimestampDate;
 	extern bool UseTimeUnits;
+	extern bool HideWindows;
 
 	extern float MinCombatTimerWindowWidth;
 	extern float MinCombatTimerWindowHeight;

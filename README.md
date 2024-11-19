@@ -10,9 +10,10 @@ Join the [nexus discord](https://discord.gg/Mvk7W7gjE4) to report issues. Upload
 
 ### All Windows
 - Toggle windows visibility with and without keybinds
-- Settings to display hours and minutes over only seconds and milliseconds
+- Settings to display hours, minutes and milliseconds over only seconds
 - Switch to use classic time units (00h 00m 00s 000ms / 00:00:00.000)
 - Display full timestamp date
+- Setting to hide the windows during loading screens, cutscenes and when map is open
 
 ### Combat Timer Window
 - Displays your combat status
@@ -25,6 +26,9 @@ Join the [nexus discord](https://discord.gg/Mvk7W7gjE4) to report issues. Upload
 - Toggle table columns with right-click
 - Reorder table columns
 - Displays the total combat time
+- Button to clear the list
 
 ## Screenshots
-![example_combat_timer](https://github.com/Linkaaaaa/GW2CombatTimer/blob/master/examples/combat_timer.png?raw=true)
+![example_combat_timer_windows](https://github.com/Linkaaaaa/GW2CombatTimer/blob/master/examples/windows.png?raw=true)
+
+![example_combat_timer_settings](https://github.com/Linkaaaaa/GW2CombatTimer/blob/master/examples/settings.png?raw=true)
